@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/main.css">
+    </head>
+    <body>
+        <div class="topcorner">
+            <p>Project Name: {{ name }}</p>
+            <p>Student Name: ({{ netid }})</p>
+        </div>
+        <h1>
+            FanFiction Playlist Generator
+        </h1>
+        <!-- <form class="form-inline -search">
+            
+            
+            <br><br>
+            
+             <div class="form-group">
+                <input id="input" type="text" name="search" class="form-control" placeholder="Input Your Text Here">
+            </div>
+            <button type="submit" class="
+            btn-info"> Go! </button> 
+        </form> -->
+
+    <title>Upload new File</title>
+     <h2>Upload .txt file or paste text in the space below:</h2>
+
+
+     <form class = 'user-file' method=post enctype=multipart/form-data>
+       <input type=file name=file>
+       <input type=submit value=Upload>
+     </form>
+
+
+    <form method=post>
+        <textarea class = 'user-text' name="text" type="textarea"> </textarea>
+       
+        {% for genre in genres %}  
+                <label class="contain">{{genre}}
+                    <input type="checkbox" name="{{genre}}" >
+                    <span class="checkmark">{{genre}}</span>
+                </label>
+            {% endfor %}
+            <br>
+            {% for artist in artists %}  
+                <label class="contain">{{artist}}
+                    <input type="checkbox" name="{{artist}}" >
+                    <span class="checkmark">{{artist}}</span>
+                </label>
+            {% endfor %}
+            <br>
+        <input class = 'submit' type="submit">
+    </form>
+
+        <div class='output'>
+        {% if data %}
+            {% for d in data %}  
+                <br>
+                <p>{{d}}</p>
+            {% endfor %}
+        {% endif %}
+        <p>{{output_message}}</p>
+        </div>
+
+        
+
+    </body>
+
+</html>
